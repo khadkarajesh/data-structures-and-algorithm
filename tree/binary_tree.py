@@ -8,8 +8,9 @@ class BinaryTree:
     def search(self, value):
         def traverse(node):
             if node is None: return False
-            if node.value == value: return True
-            return traverse(node.left) or traverse(node.right)
+            if node.value is None: return False
+            if node.value is not None and node.value == value: return True
+            return traverse(node.left) if node.value is not None and value < node.value else traverse(node.right)
 
         return traverse(self.root)
 
